@@ -18,7 +18,7 @@ const cardTypeMap = {
                 <div className="segment blue"></div>
                 <div className="segment red"></div>
               </div>,
-      'plus-four': <div class="plus-four">
+      'plus-four': <div className="plus-four">
                     <div className="card1"></div>
                     <div className="card2"></div>
                     <div className="card3"></div>

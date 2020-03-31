@@ -32,7 +32,7 @@ function createCards() {
   const allCards = [];
   cardColors.forEach(color => {
     [...Array(10).keys()]
-    .concat(['skip', 'reverse', 'plus-two', 'plus-four', 'wild'])
+    .concat(['skip', 'reverse', 'plus-two'])
     .forEach(unit => {
       allCards.push({
         content: unit,
@@ -47,11 +47,17 @@ function createCards() {
     })
   });
 
+  [...Array(8).keys()]
+          .forEach((position, index) => {
+                allCards.push({
+                    type: !(index & 1) ? 'plus-four' : 'wild'
+                })
+              })
+
   return allCards;
 }
 
 function Board() {
-  console.log(cardPile);
   const chooseCard = cardPile[Math.floor(Math.random() * cardPile.length)]
   return (
     <div className="board">
