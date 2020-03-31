@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './Board.css';
+import './Board.less';
 
 function Board() {
   return (
