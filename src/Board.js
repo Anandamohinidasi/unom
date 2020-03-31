@@ -3,10 +3,8 @@ import Card from './card/Card'
 import './Board.less';
 import './card/Card.less'
 
-function Board() {
-  return (
-    <div className="board">
-      <div>
+/*
+
   <Card content="0" color="green"></Card>
   <Card content="1" color="green"></Card>
   <Card content="2" color="green"></Card>
@@ -22,9 +20,14 @@ function Board() {
   <Card type="reverse" color="yellow"></Card>
   <Card type="wild"></Card>
   <Card type="plus-four"></Card>
-</div>
+
+
+*/
+function Board() {
+  return (
+    <div className="board">
       <div className="cardMount">
-        <span className="cardLogo"></span>
+        <Card type="back"></Card>
       </div>
       <div className="inTableCard"></div>
     </div>

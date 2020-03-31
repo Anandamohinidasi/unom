@@ -23,11 +23,18 @@ const cardTypeMap = {
                     <div className="card2"></div>
                     <div className="card3"></div>
                     <div className="card4"></div>
-                   </div>
+                   </div>,
+        'back': <div className="wild">
+                    <div className="segment red"></div>
+                    <div className="segment red"></div>
+                    <div className="segment red"></div>
+                    <div className="segment red"></div>
+                </div>
     },
     smallContent: {
       'plus-two': '+2',
-      'plus-four': '+4'
+      'plus-four': '+4',
+      'back': ' '
     }
 }
 
