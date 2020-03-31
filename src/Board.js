@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import Card from './card/Card'
 import './Board.less';
+import './card/Card.less'
 
 function Board() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="board">
+      <div>
+  <Card content="0" color="green"></Card>
+  <Card content="1" color="green"></Card>
+  <Card content="2" color="green"></Card>
+  <Card content="3" color="green"></Card>
+  <Card content="4" color="green"></Card>
+  <Card content="5" color="green"></Card>
+  <Card content="6" color="green"></Card>
+  <Card content="7" color="green"></Card>
+  <Card content="8" color="green"></Card>
+  <Card content="9" color="green"></Card>
+  <Card type="skip" color="yellow"></Card>
+  <Card type="plus-two" color="yellow"></Card>
+  <Card type="reverse" color="yellow"></Card>
+  <Card type="wild"></Card>
+  <Card type="plus-four"></Card>
+</div>
+      <div className="cardMount">
+        <span className="cardLogo"></span>
+      </div>
+      <div className="inTableCard"></div>
     </div>
   );
 }

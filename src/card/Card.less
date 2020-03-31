@@ -1,0 +1,259 @@
+@green: #3E9E32;
+@yellow: #DED71F;
+@blue: #3F4CFF;
+@red: #C11F1F;
+
+.color(@property-name) {
+   &.green {
+       @{property-name}: @green;
+   }
+   &.blue {
+       @{property-name}: @blue;
+   }
+   &.red {
+       @{property-name}: @red;
+   }
+   &.yellow {
+      @{property-name}: @yellow;
+   }
+   &.black {
+       @{property-name}: black;
+   }
+}
+@width: 200px;
+@height: @width * 1.6;
+.card {
+   .color(background-color);
+   width: @width;
+   height: @height;
+   border-radius: @width/10;
+   display: inline-block;
+   position: relative;
+   font-family: Tahoma;
+   .ellipse {
+      background-color: white;
+      margin: auto;
+      width: @width * 0.8;
+      @height: @width * 1.3;
+      height: @height;
+      position: relative;
+      top: (@width * 1.6 - @height) / 2;
+      border-radius: 50%;
+      transform: skewX(-25deg);
+   }
+   .content {
+      .color(color);
+      position: absolute;
+      left: 30%;
+      top: 25%;
+      color: @green;
+      font-size: @height/3 * 1.2;
+      font-weight: bold;
+      .content(@width/2.5);
+      .skip {
+         margin-left: -10%;
+      }
+      .wild(@width * 0.8);
+   }
+   .small-content, .small-content-reverse {
+      position: absolute;
+      font-size: @height / 10;
+      color: white;
+      font-weight: bold;
+      .skip(@height/15, white);
+      .reverse(@height/15*2, white);
+      .wild(@height/15);
+      .wild {
+         margin: 0;
+         border: 1px solid white;
+      }
+   }
+   .small-content {
+      top: 5px;
+      left: 10px;
+   }
+   .small-content-reverse {
+      right: 10px;
+      bottom: 5px;
+      transform: rotate(180deg);
+   }
+}
+.reverse(@size, @color) {
+   .reverse {
+      height: @size;
+      margin-top: -60%;
+      margin-left: 100%;
+      .arrows {
+         display: inline-block;
+         transform: rotate(-45deg);
+         .arrow {
+            width: @size/4;
+            height: @size/4;
+            background-color: @color;
+            position: relative;
+            &:before {
+               content: '';
+               display: block;
+               width: @size/4;
+               height: @size/4;
+               background-color: inherit;
+               border-top-left-radius: 100%;
+               position: absolute;
+               left: -@size/4+1;
+            }
+            &:after {
+               content: '';
+               display: block;
+               width: 0px;
+               height: 0px;
+               border: @size/4 solid @color;
+               border-top-color: transparent;
+               border-bottom-color: transparent;
+               border-right: none;
+               position: absolute;
+               right: -@size/4+1;
+               top: -@size/8;
+            }
+            &:last-child {
+               transform: rotate(180deg);
+               top: @size/20;
+               right: @size/3;
+            }
+         }
+      }
+}
+}
+.skip(@size, @color) {
+   .skip {
+      width: @size;
+      height: @size;
+      border: @size/5 solid @color;
+      border-radius: 50%;
+      margin-top: 20%;
+      &:before {
+         content:'';
+         display: block;
+         width: 100%;
+         height: 20%;
+         background-color: @color;
+         position: relative;
+         top: 40%;
+         transform: rotate(-45deg);
+      }
+   }
+}
+.content(@size) {
+   &.green {
+       .skip(@size, @green);
+      .plus-two(@green);
+      .reverse(@size*2, @green);
+   }
+   &.blue {
+       .skip(@size, @blue);
+      .plus-two(@blue);
+      .reverse(@size*2, @blue);
+   }
+   &.red {
+       .skip(@size, @red);
+      .plus-two(@red);
+      .reverse(@size*2, @red);
+   }
+   &.yellow {
+      .skip(@size, @yellow);
+      .plus-two(@yellow);
+      .reverse(@size*2, @yellow);
+   }
+   &.black {
+       .skip(@size, black);
+      .plus-two(black);
+      .reverse(@size*2, black)
+   }
+}
+.plus-two(@color) {
+   .plus-two {
+      /* height: 100%; */
+      position: relative;
+      &:before, &:after {
+         content: '';
+         display: block;
+         width: @width/4;
+         height: @width/4 * 1.6;
+         background-color: @color;
+         border-radius: 10%;
+         border: @width/40 solid white;
+         position: absolute;
+      }
+      &:before {
+         left: @width / 5.7;
+      }
+      &:after {
+         top: @width / 4;
+      }
+   }
+}
+.wild(@size) { //width = @width * 0.8
+   .wild {
+      margin: -@size/3.2 0 0 -@size/4;
+      background-color: white;
+      width: @size;
+      @height: @size * 1.625;
+      height: @height;
+      border-radius: 50%;
+      transform: skewX(-25deg);
+      overflow: hidden;
+      font-size: 0px;
+      border: 2px solid white;
+      .segment {
+         display: inline-block;
+         width: @size/2;
+         height: @height/2;
+         &.red {
+            background-color: @red;
+         }
+         &.green {
+            background-color: @green;
+         }
+         &.yellow {
+            background-color: @yellow;
+         }
+         &.blue {
+            background-color: @blue;
+         }
+      }
+   }
+}
+.plus-four {
+   /* background-color: transparent; */
+   width: @width * 0.8;
+   @height: @width * 1.3;
+   height: @height;
+   position: relative;
+   margin: -@width/4 0 0 -@width/5;
+   div[class^="card"] {
+      width: @width/4;
+      height: @width/4 * 1.6;
+      border-radius: 10%;
+      border: 5px solid white;
+      position: absolute;
+   }
+   .card1 {
+      background-color: @green;
+      left: 5%;
+      top: 50%;
+   }
+   .card2 {
+      background-color: @blue;
+      top: 25%;
+      left: 25%;
+   }
+   .card3 {
+      background-color: @red;
+      top: 35%;
+      left: 45%;
+   }
+   .card4 {
+      background-color: @yellow;
+      top: 10%;
+      left: 65%;
+   }
+}
