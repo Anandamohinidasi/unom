@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Card from './card/Card'
 import './Board.less';
 import './card/Card.less'
@@ -58,17 +58,30 @@ function createCards() {
 }
 
 function Board() {
-  const chooseCard = cardPile[Math.floor(Math.random() * cardPile.length)]
+  const [chooseCard, setChoosenCard] = useState([{
+    color:'', 
+    content:'',
+    type:''
+  }]);
+
+  function putCardInTable() {    
+    setChoosenCard(cardPile[Math.floor(Math.random() * cardPile.length)]);
+  }
+  
+
   return (
     <div className="board">
-      <div className="cardMount">
+      <div className="cardMount" onClick={putCardInTable}>
         <Card type="back"></Card>
       </div>
-      <div className="inTableCard">
-        <Card color={chooseCard.color}
-              content={chooseCard.content}
-              type={chooseCard.type}>
-        </Card>
+      <div className="inTableCard" >
+      {
+        (!!chooseCard.type || !!chooseCard.color) && 
+          <Card color={chooseCard.color}
+                content={chooseCard.content}
+                type={chooseCard.type}>
+          </Card>
+      }
       </div>
     </div>
   );
