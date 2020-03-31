@@ -65,7 +65,9 @@ function Board() {
   }]);
 
   function putCardInTable() {    
-    setChoosenCard(cardPile[Math.floor(Math.random() * cardPile.length)]);
+    const index = Math.floor(Math.random() * cardPile.length);
+    setChoosenCard(cardPile[index]);
+    cardPile.splice(index, 1);
   }
   
 
