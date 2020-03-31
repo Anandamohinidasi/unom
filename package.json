@@ -1,6 +1,11 @@
 {
   "name": "uno",
   "version": "0.1.0",
+  "author": {
+    "name": "Ananda Rodrigues",
+    "email": "ananda.mohini.dasi@hotmail.com",
+    "url": "http://www.anandarodrigues.com"
+  },
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
