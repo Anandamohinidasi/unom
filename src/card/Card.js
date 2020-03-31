@@ -39,8 +39,8 @@ const cardTypeMap = {
 }
 
 function Card(props) {
-  const content = props.content || cardTypeMap.content[props.type]; 
-  const smallContent = props.content || cardTypeMap.smallContent[props.type];
+  const content = cardTypeMap.content[props.type] || props.content; 
+  const smallContent = cardTypeMap.smallContent[props.type];
 
   return (
     <div className={'card ' + (props.color || 'black')}>
