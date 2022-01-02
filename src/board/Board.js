@@ -1,7 +1,7 @@
-import React, { useState }  from 'react';
-import Card from './card/Card'
+import React, { useState } from 'react';
+import Card from '../card/Card'
 import './Board.less';
-import './card/Card.less'
+import '../card/Card.less'
 
 /*
 
@@ -32,44 +32,44 @@ function createCards() {
   const allCards = [];
   cardColors.forEach(color => {
     [...Array(10).keys()]
-    .concat(['skip', 'reverse', 'plus-two'])
-    .forEach(unit => {
-      allCards.push({
-        content: unit,
-        color,
-        type: unit
-      },
-      {
-        content: unit,
-        color,
-        type: unit
+      .concat(['skip', 'reverse', 'plus-two'])
+      .forEach(unit => {
+        allCards.push({
+          content: unit,
+          color,
+          type: unit
+        },
+          {
+            content: unit,
+            color,
+            type: unit
+          })
       })
-    })
   });
 
   [...Array(8).keys()]
-          .forEach((position, index) => {
-                allCards.push({
-                    type: !(index & 1) ? 'plus-four' : 'wild'
-                })
-              })
+    .forEach((position, index) => {
+      allCards.push({
+        type: !(index & 1) ? 'plus-four' : 'wild'
+      })
+    })
 
   return allCards;
 }
 
 function Board() {
   const [chooseCard, setChoosenCard] = useState([{
-    color:'', 
-    content:'',
-    type:''
+    color: '',
+    content: '',
+    type: ''
   }]);
 
-  function putCardInTable() {    
+  function putCardInTable() {
     const index = Math.floor(Math.random() * cardPile.length);
     setChoosenCard(cardPile[index]);
     cardPile.splice(index, 1);
   }
-  
+
 
   return (
     <div className="board">
@@ -77,13 +77,13 @@ function Board() {
         <Card type="back"></Card>
       </div>
       <div className="inTableCard" >
-      {
-        (!!chooseCard.type || !!chooseCard.color) && 
+        {
+          (!!chooseCard.type || !!chooseCard.color) &&
           <Card color={chooseCard.color}
-                content={chooseCard.content}
-                type={chooseCard.type}>
+            content={chooseCard.content}
+            type={chooseCard.type}>
           </Card>
-      }
+        }
       </div>
     </div>
   );
